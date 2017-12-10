@@ -5,3 +5,9 @@ https://docs.google.com/presentation/d/1veA_WQcfRRx7hQnE8qklmsLYceWzQGrPHrieSEWq
 
 Direct access to the dataset:
 https://www.kaggle.com/START-UMD/gtd/data
+
+##Business Understanding
+
+##Data understanding
+
+##Planning
