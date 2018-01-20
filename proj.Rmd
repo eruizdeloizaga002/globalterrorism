@@ -1,0 +1,145 @@
+---
+title: "Proj"
+author: "B79642"
+date: "January 1, 2018"
+output: html_document
+---
+```{r}
+db <- read.csv('globalterrorismdb_0617dist.csv')
+names(db)
+```
+
+```{r}
+table(db$attacktype1_txt)
+```
+```{r}
+armed_assault <- db[db$attacktype1_txt == 'Armed Assault', ]
+table(armed_assault$country_txt)
+```
+```{r}
+armed_assault_afganistan <- armed_assault[armed_assault$country_txt == 'Afghanistan', ]
+hist(armed_assault_afganistan$iyear,breaks=48)
+```
+```{r}
+ggplot(data=db, aes(db$iyear)) + 
+  geom_histogram(breaks=seq(1970, 2016, by=1), 
+                 col="blue", 
+                 aes(fill=..count..))
+```
+```{r}
+table(db$region_txt)
+```
+```{r}
+sub_saharan_africa <- db[db$region_txt == 'Sub-Saharan Africa', ]
+table(sub_saharan_africa$attacktype1_txt)
+```
+```{r}
+western_europe <- db[db$region_txt == 'Western Europe', ]
+table(western_europe$attacktype1_txt)
+```
+```{r}
+south_east_asia <- db[db$region_txt == 'Southeast Asia', ]
+table(south_east_asia$attacktype1_txt)
+```
+```{r}
+south_asia <- db[db$region_txt == 'South Asia', ]
+table(south_asia$attacktype1_txt)
+```
+```{r}
+south_america <- db[db$region_txt == 'South America', ]
+table(south_america$attacktype1_txt)
+```
+```{r}
+north_america <- db[db$region_txt == 'North America', ]
+table(north_america$attacktype1_txt)
+```
+```{r}
+middle_east_north_africa <- db[db$region_txt == 'Middle East & North Africa', ]
+table(middle_east_north_africa$attacktype1_txt)
+```
+```{r}
+eastern_europe <- db[db$region_txt == 'Eastern Europe', ]
+table(eastern_europe$attacktype1_txt)
+```
+```{r}
+east_asia <- db[db$region_txt == 'East Asia', ]
+table(east_asia$attacktype1_txt)
+```
+```{r}
+australia_oceania <- db[db$region_txt == 'Australasia & Oceania', ]
+table(australia_oceania$attacktype1_txt)
+```
+```{r}
+central_america_caribbean <- db[db$region_txt == 'Central America & Caribbean', ]
+table(central_america_caribbean$attacktype1_txt)
+```
+```{r}
+central_asia <- db[db$region_txt == 'Central Asia', ]
+table(central_asia$attacktype1_txt)
+```
+
+////
+```{r}
+table(db$targtype1_txt)
+```
+```{r}
+sub_saharan_africa <- db[db$region_txt == 'Sub-Saharan Africa', ]
+nrow(sub_saharan_africa)
+table(sub_saharan_africa$targtype1_txt)
+```
+```{r}
+western_europe <- db[db$region_txt == 'Western Europe', ]
+nrow(western_europe)
+table(western_europe$targtype1_txt)
+```
+```{r}
+south_east_asia <- db[db$region_txt == 'Southeast Asia', ]
+nrow(south_east_asia)
+table(south_east_asia$targtype1_txt)
+```
+```{r}
+south_asia <- db[db$region_txt == 'South Asia', ]
+nrow(south_asia)
+table(south_asia$targtype1_txt)
+```
+```{r}
+south_america <- db[db$region_txt == 'South America', ]
+nrow(south_america)
+table(south_america$targtype1_txt)
+```
+```{r}
+north_america <- db[db$region_txt == 'North America', ]
+nrow(north_america)
+table(north_america$targtype1_txt)
+```
+```{r}
+middle_east_north_africa <- db[db$region_txt == 'Middle East & North Africa', ]
+nrow(middle_east_north_africa)
+table(middle_east_north_africa$targtype1_txt)
+```
+```{r}
+eastern_europe <- db[db$region_txt == 'Eastern Europe', ]
+nrow(eastern_europe)
+table(eastern_europe$targtype1_txt)
+```
+```{r}
+east_asia <- db[db$region_txt == 'East Asia', ]
+nrow(east_asia)
+table(east_asia$targtype1_txt)
+```
+```{r}
+australia_oceania <- db[db$region_txt == 'Australasia & Oceania', ]
+nrow(australia_oceania)
+table(australia_oceania$targtype1_txt)
+```
+```{r}
+central_america_caribbean <- db[db$region_txt == 'Central America & Caribbean', ]
+nrow(central_america_caribbean)
+table(central_america_caribbean$targtype1_txt)
+```
+```{r}
+central_asia <- db[db$region_txt == 'Central Asia', ]
+nrow(central_asia)
+table(central_asia$targtype1_txt)
+```
+
