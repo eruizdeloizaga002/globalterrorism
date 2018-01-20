@@ -1,0 +1,59 @@
+---
+title: "Poster"
+author: "Eneko Ruiz de Loizaga"
+date: "31 de diciembre de 2017"
+output: pdf_document
+---
+
+```{r}
+data <- read.csv("C:/Users/Portatil/Desktop/Data Mining/Poster/globalterrorismdb_0617dist.csv")
+
+#Data modifying, if nkill is NA we will put a 0 just for better data handeling
+data$nkill[is.na(data$nkill)] <- 0
+
+#Mean of number of deaths
+mean(data$nkill[!is.na(data$nkill)])
+
+#Countries with more than 350 dead people in at least one attack
+dangerousCountry <- unique(data$country_txt[data$nkill>500])
+
+#With this countries, we will see which of those have the most deaths in all their suffered attacks
+dangerTable <- data.frame("Country" = character(1), "nkill" = numeric(1), stringsAsFactors=FALSE)
+
+for (i in 1:length(dangerousCountry)){
+  country <- as.character(dangerousCountry[i])
+  dangerTable <- rbind(dangerTable, c(country, max(data$nkill[data$country_txt == country])))
+}
+
+dangerTable <- dangerTable[-c(1), ]
+
+dangerTable$Country <- as.character(dangerTable$Country)
+
+dangerTable$nkill <- as.numeric(dangerTable$nkill)
+
+plot(factor(dangerTable$Country), dangerTable$nkill)
+
+#Most common weapon (last 5)
+freqfuncSPLITED <- function(x){
+  sort(table(unlist(strsplit(as.character(x), " "))))
+}
+
+x <- freqfuncSPLITED(data$weaptype1_txt)[(length(freqfuncSPLITED(data$weaptype1_txt)) - 4):length(freqfuncSPLITED(data$weaptype1_txt))]
+
+plot(x, "b", xlab="Weapon sort", ylab="Quanity")
+
+#Top 7 countries with more frequency in attacks
+t <- table(data$country_txt)
+
+t <- t[t>6000]
+
+plot(t)
+
+#Top 6 targets
+t <- table(data$targtype1_txt)
+
+t <- t[t>8000]
+
+plot(t, xlab="Target", ylab="Quanity")
+
+```
